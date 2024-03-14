@@ -1,2 +1,2 @@
-# SynPar: Synthetic Faces Dataset with Demographic Parity
+# SynPar: Synthetic Faces with Demographic Parity
 
