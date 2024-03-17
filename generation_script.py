@@ -2,8 +2,8 @@ import torch
 import numpy as np
 import dnnlib
 import os 
-from stylegan2 import Generator as StyleGAN2Generator
-import legacy # pylint: disable=import-error
+from stylegan_utils.stylegan2 import Generator as StyleGAN2Generator
+from stylegan_utils import legacy # pylint: disable=import-error
 from PIL import Image
 from torch.utils.data import DataLoader
 from utils import parse_arguments, get_config
