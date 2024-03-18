@@ -16,4 +16,4 @@ dependencies:
     - pyyaml 
     - scipy 
     - ninja 
-
+    - huggingface_hub 
