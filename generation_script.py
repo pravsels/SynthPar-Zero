@@ -9,10 +9,11 @@ from torch.utils.data import DataLoader
 from utils import parse_arguments, get_config
 from utils import CapturedException, CustomDataset
 from utils import class_to_race_map
+from huggingface_hub import hf_hub_download
+import shutil
 
 class Generator:
     def __init__(self, 
-                 pkl, 
                  device='cuda', 
                  imgs_dir='generated_images'):
         
@@ -20,27 +21,46 @@ class Generator:
         self._dtype = torch.float32 if self._device.type == 'mps' else torch.float64
         self._pkl_data = None
         self._G = None
-        self.pkl = pkl
         self.imgs_dir = imgs_dir
         self.load_network()
 
     def load_network(self):
-        print(f'Loading "{self.pkl}"... ', end='', flush=True)
+        repo_id = 'pravsels/stylegan2_conditional'
+        model_filename = 'network-conditional.pkl'
+        local_model_dir = 'models'
+        local_model_file = None 
+        
+        print(f'Downloading model from Hugging Face Hub... ', end='', flush=True)
         try:
-            with dnnlib.util.open_url(self.pkl, verbose=False) as f:
+            # Download the model file from Hugging Face Hub
+            local_model_file = hf_hub_download(repo_id=repo_id, 
+                                                local_dir=local_model_dir,
+                                                local_dir_use_symlinks="auto",
+                                                filename=model_filename)
+        except Exception as e:
+            raise CapturedException(f'Failed to download model from Hugging Face Hub: {str(e)}')
+        
+        print(f'Loading model from "{local_model_file}"... ', end='', flush=True)
+        try:
+            # Load the local model file
+            with open(local_model_file, 'rb') as f:
                 self._pkl_data = legacy.load_network_pkl(f)
             print('Done.')
-        except:
-            raise CapturedException(f'Failed to load "{self.pkl}"!')
-
+        except Exception as e:
+            raise CapturedException(f'Failed to load model from "{local_model_file}": {str(e)}')
+        
+        if self._pkl_data is None or 'G_ema' not in self._pkl_data:
+            raise CapturedException(f'Invalid or missing data in the loaded model file: "{local_model_file}"')
+        
         try:
-            self._G = StyleGAN2Generator(*self._pkl_data['G_ema'].init_args, 
-                                         **self._pkl_data['G_ema'].init_kwargs)
+            self._G = StyleGAN2Generator(*self._pkl_data['G_ema'].init_args,
+                                        **self._pkl_data['G_ema'].init_kwargs)
             self._G.load_state_dict(self._pkl_data['G_ema'].state_dict())
             self._G.to(self._device)
             self._G.eval()
-        except:
-            raise CapturedException(f'Failed to initialize generator from "{self.pkl}"!')
+        except Exception as e:
+            raise CapturedException(f'Failed to initialize generator from the loaded model: {str(e)}')
+
 
     def generate_images(self, 
                         w0_seed=0, 
@@ -79,8 +99,8 @@ if __name__ == "__main__":
     command_line_args = parse_arguments()
     config = get_config(command_line_args.config)
 
-    batch_size = 16 
-    num_workers = 8 
+    batch_size = 16
+    num_workers = 8
 
     class_index = config.class_index
     no_of_identities_per_class = config.no_of_identities_per_class
@@ -91,8 +111,7 @@ if __name__ == "__main__":
                              batch_size=batch_size, 
                              num_workers=num_workers)
 
-    pkl_path = './models/network-conditional.pkl'
-    generator = Generator(pkl_path)
+    generator = Generator()
 
     for seed in data_loader:
 

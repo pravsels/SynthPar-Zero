@@ -70,7 +70,7 @@ echo "Activating conda environment $env_name..."
 source activate "$env_name"
 
 # Command to execute
-run_command="python main.py -c ${cfg_file}"
+run_command="python generation_script.py -c ${cfg_file}"
 
 ##########
 # Set up scratch
