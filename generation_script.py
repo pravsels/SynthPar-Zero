@@ -79,8 +79,8 @@ if __name__ == "__main__":
     command_line_args = parse_arguments()
     config = get_config(command_line_args.config)
 
-    batch_size = 8 
-    num_workers = 1 
+    batch_size = 16 
+    num_workers = 8 
 
     class_index = config.class_index
     no_of_identities_per_class = config.no_of_identities_per_class
