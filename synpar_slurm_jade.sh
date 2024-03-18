@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#SBATCH --partition="small"
+#SBATCH --partition="devel"
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:1
-#SBATCH --time=1-00:00:00
+#SBATCH --time=0-00:30:00
 #SBATCH --cpus-per-task=24
 
 export CUDA_VISIBLE_DEVICES=$SLURM_JOB_GPUS
@@ -37,7 +37,7 @@ cfg_file="0.yaml"
 #cfg_file="7.yaml"
 
 # print out config file
-cat config/${cfg_file}.yaml
+cat config/${cfg_file}
 
 # Path to scratch directory on host
 scratch_host="/raid/local_scratch"
@@ -46,7 +46,7 @@ scratch_root="$scratch_host/${USER}/${job_id}"
 # Files and directories to copy to scratch before the job
 inputs="."
 # File and directories to copy from scratch after the job
-outputs="outputs"
+outputs="generated_images"
 
 # Conda environment name
 env_name="synpar"
@@ -55,7 +55,7 @@ env_file="environment.yml"
 
 # Purge modules and load conda
 module purge
-module load conda
+module load python/anaconda3
 
 # Check if the conda environment already exists
 if conda env list | grep -q "$env_name"; then
@@ -88,6 +88,11 @@ done
 # Monitor GPU usage
 nvidia-smi dmon -o TD -s um -d 1 > "dmon_$job_id".txt &
 gpu_watch_pid=$!
+
+# run the application
+start_time=$(date -Is --utc)
+$run_command
+end_time=$(date -Is --utc)
 
 # Stop GPU monitoring
 kill $gpu_watch_pid

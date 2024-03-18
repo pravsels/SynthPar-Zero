@@ -10,7 +10,7 @@ from utils import parse_arguments, get_config
 from utils import CapturedException, CustomDataset
 from utils import class_to_race_map
 from huggingface_hub import hf_hub_download
-import shutil
+from tqdm import tqdm 
 
 class Generator:
     def __init__(self, 
@@ -113,11 +113,9 @@ if __name__ == "__main__":
 
     generator = Generator()
 
-    for seed in data_loader:
+    for seed in tqdm(data_loader):
 
-        generated_images = generator.generate_images(seed, 
-                                                     class_index=class_index)
+        generator.generate_images(seed, 
+                                  class_index=class_index)
 
         # You can save or display the generated images as needed
-
-        break 
