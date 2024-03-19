@@ -27,14 +27,14 @@ fi
 
 # Set user ID and name of project
 repo="SynPar"
-cfg_file="0.yaml"
-#cfg_file="1.yaml"
-#cfg_file="2.yaml"
-#cfg_file="3.yaml"
-#cfg_file="4.yaml"
-#cfg_file="5.yaml"
-#cfg_file="6.yaml"
-#cfg_file="7.yaml"
+cfg_file="IndianFemale.yaml"
+#cfg_file="BlackFemale.yaml"
+#cfg_file="AsianFemale.yaml"
+#cfg_file="AsianMale.yaml"
+#cfg_file="WhiteMale.yaml"
+#cfg_file="IndianMale.yaml"
+#cfg_file="BlackMale.yaml"
+#cfg_file="WhiteFemale.yaml"
 
 # print out config file
 cat config/${cfg_file}

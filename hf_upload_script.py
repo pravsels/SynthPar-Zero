@@ -6,14 +6,13 @@ with open('hf_token.json') as f:
     token_data = json.load(f)
     access_token = token_data['access_token']
 
-# Set the repository name and path to the local .pkl file
-repo_name = 'pravsels/stylegan2_conditional'
-pkl_file = 'models/network-conditional.pkl'
+repo_name = 'pravsels/synpar'
+model_file = 'models/fairface_race4.pt'
 
-# Upload the local .pkl file to the Hugging Face Hub
+# Upload the local model file to the HF Hub
 upload_file(
-    path_or_fileobj=pkl_file,
-    path_in_repo='network-conditional.pkl',
+    path_or_fileobj=model_file,
+    path_in_repo='fairface_race4.pt',
     repo_id=repo_name,
     repo_type='model',
     token=access_token
