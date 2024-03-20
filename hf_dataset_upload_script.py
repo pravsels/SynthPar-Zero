@@ -11,14 +11,12 @@ dataset_folder = 'generated_images'
 
 api = HfApi(token=access_token)
 
-# Upload the entire folder to the Hugging Face Hub
 api.upload_folder(
     folder_path=dataset_folder,
-    path_in_repo='.',
     repo_id=repo_name,
-    repo_type='dataset',
-    token=access_token
+    repo_type="dataset",
+    ignore_patterns=".gitignore",
+    commit_message="Upload dataset"
 )
 
 print("Dataset uploaded successfully!")
-
