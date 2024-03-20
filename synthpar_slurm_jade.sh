@@ -26,7 +26,7 @@ else
 fi
 
 # Set user ID and name of project
-repo="SynPar"
+repo="SynthPar"
 cfg_file="IndianFemale.yaml"
 #cfg_file="BlackFemale.yaml"
 #cfg_file="AsianFemale.yaml"
@@ -49,7 +49,7 @@ inputs="."
 outputs="generated_images"
 
 # Conda environment name
-env_name="synpar"
+env_name="synthpar"
 # Conda environment YAML file
 env_file="environment.yml"
 

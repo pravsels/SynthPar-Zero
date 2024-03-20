@@ -1,6 +1,5 @@
 import torch
 import numpy as np
-import dnnlib
 import os 
 from stylegan_utils.stylegan2 import Generator as StyleGAN2Generator
 from stylegan_utils import legacy # pylint: disable=import-error
@@ -25,20 +24,23 @@ class Generator:
         self.load_network()
 
     def load_network(self):
-        repo_id = 'pravsels/stylegan2_conditional'
+        repo_id = 'pravsels/synthpar'
         model_filename = 'network-conditional.pkl'
         local_model_dir = 'models'
-        local_model_file = None 
+        local_model_file = os.path.join(local_model_dir, model_filename) 
         
-        print(f'Downloading model from Hugging Face Hub... ', end='', flush=True)
-        try:
-            # Download the model file from Hugging Face Hub
-            local_model_file = hf_hub_download(repo_id=repo_id, 
-                                                local_dir=local_model_dir,
-                                                local_dir_use_symlinks="auto",
-                                                filename=model_filename)
-        except Exception as e:
-            raise CapturedException(f'Failed to download model from Hugging Face Hub: {str(e)}')
+        if not os.path.exists(local_model_file):
+            print(f'Downloading model from Hugging Face Hub... ', end='', flush=True)
+            try:
+                # Download the model file from Hugging Face Hub
+                local_model_file = hf_hub_download(repo_id=repo_id, 
+                                                    local_dir=local_model_dir,
+                                                    local_dir_use_symlinks="auto",
+                                                    filename=model_filename)
+            except Exception as e:
+                raise CapturedException(f'Failed to download model from Hugging Face Hub: {str(e)}')
+        else: 
+            print(f'Model already exists locally at {local_model_file}. Skipping download.')
         
         print(f'Loading model from "{local_model_file}"... ', end='', flush=True)
         try:
@@ -74,10 +76,7 @@ class Generator:
         
         if class_index is not None:
             label[:, class_index] = 1
-            output_dir = os.path.join(self.imgs_dir, class_to_race_map[class_index])
-            os.makedirs(output_dir, 
-                        exist_ok=True)
-        
+           
         ws = self._G.mapping(z, 
                              label, 
                              truncation_psi=truncation_psi, 
@@ -92,7 +91,7 @@ class Generator:
         pil_imgs = [Image.fromarray(img.cpu().numpy()) for img in imgs]
         
         for index, p_img in zip(w0_seed, pil_imgs):
-            p_img.save(f'{output_dir}/{index}.png')
+            p_img.save(f"{self.imgs_dir}/{''.join([c for c in class_to_race_map[class_index] if c.isupper()]).lower()}_{index}.png")
 
 
 if __name__ == "__main__":
@@ -105,17 +104,15 @@ if __name__ == "__main__":
     class_index = config.class_index
     no_of_identities_per_class = config.no_of_identities_per_class
 
-    dataset = CustomDataset(no_of_identities_per_class)
+    zseed_dataset = CustomDataset(no_of_identities_per_class)
 
-    data_loader = DataLoader(dataset, 
+    data_loader = DataLoader(zseed_dataset, 
                              batch_size=batch_size, 
                              num_workers=num_workers)
 
     generator = Generator()
 
     for seed in tqdm(data_loader):
-
         generator.generate_images(seed, 
                                   class_index=class_index)
 
-        # You can save or display the generated images as needed

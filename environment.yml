@@ -1,4 +1,4 @@
-name: synpar
+name: synthpar
 channels:
   - pytorch
   - conda-forge

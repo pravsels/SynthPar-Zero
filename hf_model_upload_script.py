@@ -6,7 +6,7 @@ with open('hf_token.json') as f:
     token_data = json.load(f)
     access_token = token_data['access_token']
 
-repo_name = 'pravsels/synpar'
+repo_name = 'pravsels/synthpar'
 model_file = 'models/fairface_race4.pt'
 
 # Upload the local model file to the HF Hub
