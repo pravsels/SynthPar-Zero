@@ -8,9 +8,10 @@ It provides 2 key resources:
     
 - A dataset of 80,000 synthetic face images evenly distributed across 8 categories (4 races × 2 sexes), built upon the VGGFace dataset and labels.
 
+
 ## Loading the dataset
 
-Load the dataset from the Hugging Face dataset repository `pravsels/synthpar`:
+The dataset can be loaded from the HuggingFace repository:
 
 ```
 from datasets import load_dataset
@@ -20,8 +21,6 @@ dataset = load_dataset("pravsels/synthpar")
 
 
 ## Generating images
-
-To generate your own synthetic face images using the provided conditional StyleGAN2 generator, follow these steps:
 
 Create an anaconda environment:
 ```
@@ -37,11 +36,7 @@ conda activate synthpar
 
 Run the generation script with the desired configuration:
 ```
-python generation_script.py -c BlackFemale.yaml
+python generation_script.py -c configs/BlackFemale.yaml
 ```
 
-The configuration YAML files contains the following parameters:
-- class_index: The index of the target class (race and sex) for generation.
-- no_of_identities_per_class: The number of unique identities to generate for the specified class.
-- images_per_batch: The number of images to generate per batch.
-
+Please find the configs for the other demographics in the `configs` folder. 
