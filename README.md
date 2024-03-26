@@ -40,3 +40,8 @@ python generation_script.py -c configs/BlackFemale.yaml
 ```
 
 Please find the configs for the other demographics in the `configs` folder. 
+
+
+## Licence 
+
+The code, dataset and model are released under the MIT license. 
