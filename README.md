@@ -4,9 +4,9 @@ SynthPar aims to facilitate the development and evaluation of face recognition m
 
 It provides 2 key resources:
 
-- A conditional StyleGAN2 generator that allows users to create synthetic face images for specified attributes like race and sex.
+- A conditional StyleGAN2 [generator](https://huggingface.co/pravsels/synthpar) that allows users to create synthetic face images for specified attributes like race and sex.
     
-- A dataset of 80,000 synthetic face images evenly distributed across 4 races (Asian, White, Indian, Black) and 2 sexes (Male, Female), built upon the VGGFace2 dataset and labels.
+- A [dataset](https://huggingface.co/datasets/pravsels/synthpar) of 80,000 synthetic face images evenly distributed across 4 races (Asian, White, Indian, Black) and 2 sexes (Male, Female), built upon the VGGFace2 dataset and labels.
 
 
 ## Loading the dataset
