@@ -24,10 +24,8 @@ To load the images in a folder of your choosing and have control over the number
 
 ## Generating images
 
-Create an anaconda environment:
+Create anaconda environment:
 ```
-chmod +x *.sh
-
 ./install_conda_env.sh
 ```
 
