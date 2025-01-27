@@ -42,6 +42,14 @@ python generation_script.py -c configs/BlackFemale.yaml
 Please find the configs for the other demographics in the `configs` folder. 
 
 
+## Docker support 
+
+To build and run the docker container, use `docker_build.sh` and `run_docker_container.sh` scripts respectively.
+
+Once the container is running, the generation script can be run as expected. 
+
+
 ## Licence 
 
 The code, [dataset](https://huggingface.co/datasets/pravsels/synthpar) and [model](https://huggingface.co/pravsels/synthpar) are released under the MIT license. 
+
