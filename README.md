@@ -10,16 +10,16 @@ It provides 2 key resources:
 
 <table>
   <tr>
-    <td><img src="./generated_images/af_3.png" width="22%"></td>
-    <td><img src="./generated_images/am_0.png" width="22%"></td>
-    <td><img src="./generated_images/bf_2.png" width="22%"></td>
-    <td><img src="./generated_images/bm_7.png" width="22%"></td>
+    <td><img src="./generated_images/af_3.png" width="70%"></td>
+    <td><img src="./generated_images/am_0.png" width="70%"></td>
+    <td><img src="./generated_images/bf_2.png" width="70%"></td>
+    <td><img src="./generated_images/bm_7.png" width="70%"></td>
   </tr>
   <tr>
-    <td><img src="./generated_images/if_3.png" width="22%"></td>
-    <td><img src="./generated_images/im_2.png" width="22%"></td>
-    <td><img src="./generated_images/wf_0.png" width="22%"></td>
-    <td><img src="./generated_images/wm_5.png" width="22%"></td>
+    <td><img src="./generated_images/if_3.png" width="70%"></td>
+    <td><img src="./generated_images/im_2.png" width="70%"></td>
+    <td><img src="./generated_images/wf_0.png" width="70%"></td>
+    <td><img src="./generated_images/wm_5.png" width="70%"></td>
   </tr>
 </table>
 
