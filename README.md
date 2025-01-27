@@ -8,6 +8,22 @@ It provides 2 key resources:
     
 - A [dataset](https://huggingface.co/datasets/pravsels/synthpar) of 80,000 synthetic face images evenly distributed across 4 races (Asian, White, Indian, Black) and 2 sexes (Male, Female), built with [VGGFace2](https://github.com/ox-vgg/vgg_face2) dataset and labels.
 
+<table>
+  <tr>
+    <td><img src="./generated_images/af_3.png" width="22%"></td>
+    <td><img src="./generated_images/am_0.png" width="22%"></td>
+    <td><img src="./generated_images/bf_2.png" width="22%"></td>
+    <td><img src="./generated_images/bm_7.png" width="22%"></td>
+  </tr>
+  <tr>
+    <td><img src="./generated_images/if_3.png" width="22%"></td>
+    <td><img src="./generated_images/im_2.png" width="22%"></td>
+    <td><img src="./generated_images/wf_0.png" width="22%"></td>
+    <td><img src="./generated_images/wm_5.png" width="22%"></td>
+  </tr>
+</table>
+
+*Examples of generations from the eight categories of the SynthPar model.*
 
 ## Loading the dataset
 
