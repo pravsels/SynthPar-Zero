@@ -1,4 +1,4 @@
-# SynthPar: Synthetic Faces with Demographic Parity
+# SynthPar-Zero: Synthetic Faces with Demographic Parity
 
 SynthPar aims to facilitate the development and evaluation of face recognition models, with the goal of closing the gap in performance across all demographic groups.
 
