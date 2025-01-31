@@ -11,7 +11,7 @@ with open('hf_token.json') as f:
 
 images_per_shard = 10000
 dataset_folder = "generated_images"
-repo_id = 'pravsels/synthpar'
+repo_id = 'pravsels/synthpar-zero'
 
 image_files = [f for f in os.listdir(dataset_folder) if f.endswith((".jpg", ".png", ".jpeg"))]
 total_shards = (len(image_files) + images_per_shard - 1) // images_per_shard
