@@ -4,9 +4,9 @@ SynthPar aims to facilitate the development and evaluation of face recognition m
 
 It provides 2 key resources:
 
-- A conditional StyleGAN2 [generator](https://huggingface.co/pravsels/synthpar) that allows users to create synthetic face images for specified attributes like race and sex.
+- A conditional StyleGAN2 [generator](https://huggingface.co/pravsels/synthpar-zero) that allows users to create synthetic face images for specified attributes like race and sex.
     
-- A [dataset](https://huggingface.co/datasets/pravsels/synthpar) of 80,000 synthetic face images evenly distributed across 4 races (Asian, White, Indian, Black) and 2 sexes (Male, Female), built with [VGGFace2](https://github.com/ox-vgg/vgg_face2) dataset and labels.
+- A [dataset](https://huggingface.co/datasets/pravsels/synthpar-zero) of 80,000 synthetic face images evenly distributed across 4 races (Asian, White, Indian, Black) and 2 sexes (Male, Female), built with [VGGFace2](https://github.com/ox-vgg/vgg_face2) dataset and labels.
 
 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; align-items: center; justify-items: center;">
   <img src="./generated_images/af_3.png" style="width: 20%; margin: 0; padding: 0;">
@@ -64,5 +64,5 @@ Once the container is running, the generation script can be run as expected.
 
 ## Licence 
 
-The code, [dataset](https://huggingface.co/datasets/pravsels/synthpar) and [model](https://huggingface.co/pravsels/synthpar) are released under the MIT license. 
+The code, [dataset](https://huggingface.co/datasets/pravsels/synthpar-zero) and [model](https://huggingface.co/pravsels/synthpar-zero) are released under the MIT license. 
 
