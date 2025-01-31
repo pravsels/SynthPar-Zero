@@ -1,6 +1,6 @@
 # SynthPar-Zero: Synthetic Faces with Demographic Parity
 
-SynthPar aims to facilitate the development and evaluation of face recognition models, with the goal of closing the gap in performance across all demographic groups.
+SynthPar-Zero aims to facilitate the development and evaluation of face recognition models, with the goal of closing the gap in performance across all demographic groups.
 
 It provides 2 key resources:
 
@@ -19,7 +19,7 @@ It provides 2 key resources:
   <img src="./generated_images/wm_5.png" style="width: 20%; margin: 0; padding: 0;">
 </div>
 
-<p>Examples generations from the 8 categories of the SynthPar model.</p>
+<p>Examples generations from the 8 categories of the SynthPar-Zero model.</p>
 
 
 ## Loading the dataset
@@ -29,7 +29,7 @@ The dataset can be loaded from the HuggingFace repository:
 ```
 from datasets import load_dataset
 
-dataset = load_dataset("pravsels/synthpar")
+dataset = load_dataset("pravsels/synthpar-zero")
 ```
 
 To load the images in a folder of your choosing and have control over the number of sharded zip files to download, use the `dload_hf_dataset.py` script. 
